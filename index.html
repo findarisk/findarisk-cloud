@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>FindARisk</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Supabase JS v2 -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
   <!-- Navigation -->
@@ -16,9 +21,9 @@
     <a href="used-car-pdi.html">Used Car PDI</a>
   </nav>
 
-  <hr>
+  <hr />
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <h1>Find the risk before you accept the car</h1>
 
   <p>
@@ -39,12 +44,11 @@
     <li><strong>Used Car PDI</strong> – Find hidden problems before you buy</li>
   </ul>
 
-  <p>
-    <strong>Inspect first. Decide later.</strong>
-  </p>
+  <p><strong>Inspect first. Decide later.</strong></p>
 
-  <hr>
+  <hr />
 
+  <!-- Pricing -->
   <h2>Get Your PDI Report</h2>
 
   <p>
@@ -64,14 +68,14 @@
     </li>
   </ul>
 
-
   <p>
     <a href="new-car-pdi.html"><button>Buy New Car PDI</button></a>
     <a href="used-car-pdi.html"><button>Buy Used Car PDI</button></a>
   </p>
 
-  <hr>
+  <hr />
 
+  <!-- Account -->
   <h2>Account</h2>
 
   <button onclick="loginWithGoogle()">Login with Google</button>
@@ -79,33 +83,41 @@
 
   <p id="user-status">Not logged in</p>
 
-<script>
-  const supabase = window.supabase.createClient(
-    "https://qocbciazmukligtcxkfd.supabase.co",
-    "sb_publishable_YOUR_KEY_HERE"
-  );
+  <!-- Supabase Logic -->
+  <script>
+    // Create Supabase client
+    const supabaseClient = window.supabase.createClient(
+      "https://qocbciazmukligtcxkfd.supabase.co",
+      "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
+    );
 
-  async function loginWithGoogle() {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google'
-    });
-  }
-
-  async function logout() {
-    await supabase.auth.signOut();
-    document.getElementById("user-status").innerText = "Not logged in";
-  }
-
-  async function checkUser() {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      document.getElementById("user-status").innerText =
-        "Logged in as " + user.email;
+    // Login with Google
+    function loginWithGoogle() {
+      supabaseClient.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: window.location.origin
+        }
+      });
     }
-  }
 
-  checkUser();
-</script>
+    // Logout
+    async function logout() {
+      await supabaseClient.auth.signOut();
+      document.getElementById("user-status").innerText = "Not logged in";
+    }
+
+    // Check logged-in user
+    async function checkUser() {
+      const { data } = await supabaseClient.auth.getUser();
+      if (data && data.user) {
+        document.getElementById("user-status").innerText =
+          "Logged in as " + data.user.email;
+      }
+    }
+
+    checkUser();
+  </script>
 
 </body>
 </html>
