@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard – FindARisk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="dashboard.html">Dashboard</a> |
+    <a href="#" onclick="logout()">Logout</a>
+  </nav>
+
+  <hr />
+
+  <h1>Dashboard</h1>
+  <p id="welcome">Checking login...</p>
+
+  <hr />
+
+  <h2>Your Products</h2>
+
+  <div>
+    <h3>🚗 New Car PDI</h3>
+    <p>Status: <strong>Not Purchased</strong></p>
+    <button>Buy New Car PDI</button>
+  </div>
+
+  <hr />
+
+  <div>
+    <h3>🚙 Used Car PDI</h3>
+    <p>Status: <strong>Not Purchased</strong></p>
+    <button>Buy Used Car PDI</button>
+  </div>
+
+  <script>
+    const supabaseClient = window.supabase.createClient(
+      "https://qocbciazmukligtcxkfd.supabase.co",
+      "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
+    );
+
+    async function checkAuth() {
+      const { data } = await supabaseClient.auth.getUser();
+
+      if (!data.user) {
+        // Not logged in → send back to home
+        window.location.href = "index.html";
+        return;
+      }
+
+      document.getElementById("welcome").innerText =
+        "Welcome, " + data.user.email;
+    }
+
+    async function logout() {
+      await supabaseClient.auth.signOut();
+      window.location.href = "index.html";
+    }
+
+    checkAuth();
+  </script>
+
+</body>
+</html>
