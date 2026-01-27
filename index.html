@@ -8,7 +8,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Supabase JS v2 -->
+  <!-- Supabase JS v2 (FIXED) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
@@ -89,7 +89,6 @@
       "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
     );
 
-    // Login with Google
     function loginWithGoogle() {
       supabaseClient.auth.signInWithOAuth({
         provider: "google",
@@ -99,11 +98,9 @@
       });
     }
 
-    // If already logged in → go to dashboard
     async function checkUser() {
-     const { data } = await supabaseClient.auth.getUser();
+      const { data } = await supabaseClient.auth.getUser();
 
-     // Check if this page load is coming from OAuth redirect
       const urlParams = new URLSearchParams(window.location.search);
       const isOAuthRedirect =
         urlParams.has("code") || window.location.hash.includes("access_token");
@@ -112,6 +109,7 @@
         window.location.href = "dashboard.html";
       }
     }
+
     checkUser();
   </script>
 
