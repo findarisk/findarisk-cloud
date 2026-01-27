@@ -101,13 +101,17 @@
 
     // If already logged in → go to dashboard
     async function checkUser() {
-      const { data } = await supabaseClient.auth.getUser();
+     const { data } = await supabaseClient.auth.getUser();
 
-      if (data && data.user) {
+     // Check if this page load is coming from OAuth redirect
+      const urlParams = new URLSearchParams(window.location.search);
+      const isOAuthRedirect =
+        urlParams.has("code") || window.location.hash.includes("access_token");
+
+      if (data?.user && isOAuthRedirect) {
         window.location.href = "dashboard.html";
       }
     }
-
     checkUser();
   </script>
 
