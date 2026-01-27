@@ -1,64 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>New Car PDI – FindARisk</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
   <nav>
     <a href="index.html">Home</a> |
     <a href="new-car-pdi.html">New Car PDI</a> |
-    <a href="used-car-pdi.html">Used Car PDI</a>
+    <a href="used-car-pdi.html">Used Car PDI</a> |
+    <a href="dashboard.html">Dashboard</a>
   </nav>
 
-  <hr>
+  <hr />
 
   <h1>New Car PDI Report</h1>
+  <p>Even brand-new cars can have issues due to transport or handling.</p>
 
-  <p>
-    Even brand-new cars can have issues due to transport,
-    storage, or handling.
-  </p>
+  <p id="user-status"></p>
 
-  <h2>This report helps you:</h2>
-  <ul>
-    <li>Identify repaint or damage</li>
-    <li>Check vehicle details before registration</li>
-    <li>Avoid delivery-day pressure</li>
-  </ul>
+  <script>
+    const supabaseClient = window.supabase.createClient(
+      "https://qocbciazmukligtcxkfd.supabase.co",
+      "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
+    );
 
-  <p>
-    <strong>Do the inspection before accepting delivery.</strong>
-  </p>
+    async function syncUser() {
+      const { data } = await supabaseClient.auth.getUser();
 
-  <hr>
+      if (data?.user) {
+        const name =
+          data.user.user_metadata?.full_name ||
+          data.user.user_metadata?.name ||
+          data.user.email;
 
-  <h2>Price</h2>
+        document.getElementById("user-status").innerText =
+          "Logged in as " + name;
+      }
+    }
 
-  <p>
-    <span class="old-price">₹99</span>
-    <span class="new-price">₹29</span>
-    <span> – Lifetime access</span>
-  </p>
-
-  <p>
-    Access your report and videos anytime. No expiry.
-  </p>
-
-  <p>
-    Includes:
-  </p>
-
-  <ul>
-    <li>Step-by-step checklist</li>
-    <li>Inspection videos</li>
-    <li>Delivery-day decision guidance</li>
-  </ul>
-
-  <button>Buy New Car PDI</button>
+    syncUser();
+  </script>
 
 </body>
 </html>

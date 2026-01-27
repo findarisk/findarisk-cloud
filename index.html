@@ -11,6 +11,7 @@
 
 <body>
 
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a> |
     <a href="new-car-pdi.html">New Car PDI</a> |
@@ -56,19 +57,23 @@
       document.getElementById("user-status").innerText = "Not logged in";
     }
 
-    async function showStatus() {
+    async function syncUser() {
       const { data } = await supabaseClient.auth.getUser();
 
       if (data?.user) {
+        const name =
+          data.user.user_metadata?.full_name ||
+          data.user.user_metadata?.name ||
+          data.user.email;
+
         document.getElementById("user-status").innerText =
-          "Logged in as " +
-          (data.user.user_metadata?.full_name || data.user.email);
+          "Logged in as " + name;
       } else {
         document.getElementById("user-status").innerText = "Not logged in";
       }
     }
 
-    showStatus();
+    syncUser();
   </script>
 
 </body>
