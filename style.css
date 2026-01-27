@@ -63,3 +63,85 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
 }
+
+.hero {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.highlight {
+  color: #FF7A18;
+}
+
+.hero-sub {
+  font-size: 1.2em;
+  color: #4B5563;
+}
+
+.hero-cta {
+  margin: 20px 0;
+}
+
+.btn-primary {
+  background: #FF7A18;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #E96500;
+}
+
+.btn-outline {
+  border: 2px solid #FF7A18;
+  color: #FF7A18;
+  padding: 10px 18px;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+
+.why {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.why-card {
+  background: #FFF7ED;
+  border-left: 4px solid #FF7A18;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.highlight-card {
+  font-weight: bold;
+}
+
+.products {
+  display: flex;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.product-card {
+  border: 1px solid #E5E7EB;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: #9CA3AF;
+}
+
+.price .new {
+  color: #FF7A18;
+  font-size: 1.4em;
+  font-weight: bold;
+}
