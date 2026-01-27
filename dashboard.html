@@ -20,25 +20,9 @@
   <hr />
 
   <h1>Dashboard</h1>
-  <p id="welcome">Checking login...</p>
+  <p id="welcome">Checking login…</p>
 
   <hr />
-
-  <h2>Your Products</h2>
-
-  <div>
-    <h3>🚗 New Car PDI</h3>
-    <p>Status: <strong>Not Purchased</strong></p>
-    <button>Buy New Car PDI</button>
-  </div>
-
-  <hr />
-
-  <div>
-    <h3>🚙 Used Car PDI</h3>
-    <p>Status: <strong>Not Purchased</strong></p>
-    <button>Buy Used Car PDI</button>
-  </div>
 
   <script>
     const supabaseClient = window.supabase.createClient(
@@ -49,17 +33,15 @@
     async function checkAuth() {
       const { data } = await supabaseClient.auth.getUser();
 
-      if (!data.user) {
+      if (!data?.user) {
         window.location.href = "index.html";
         return;
       }
 
-      const user = data.user;
-
       const name =
-        user.user_metadata?.full_name ||
-        user.user_metadata?.name ||
-        user.email;
+        data.user.user_metadata?.full_name ||
+        data.user.user_metadata?.name ||
+        data.user.email;
 
       document.getElementById("welcome").innerText =
         "Welcome, " + name;
