@@ -18,7 +18,8 @@
   <nav>
     <a href="index.html">Home</a> |
     <a href="new-car-pdi.html">New Car PDI</a> |
-    <a href="used-car-pdi.html">Used Car PDI</a>
+    <a href="used-car-pdi.html">Used Car PDI</a> |
+    <a href="dashboard.html">Dashboard</a>
   </nav>
 
   <hr />
@@ -78,42 +79,48 @@
   <!-- Account -->
   <h2>Account</h2>
 
-  <button onclick="loginWithGoogle()">Login with Google</button>
+  <button id="loginBtn">Login with Google</button>
   <button onclick="logout()">Logout</button>
 
   <p id="user-status">Not logged in</p>
 
   <!-- Supabase Logic -->
   <script>
-    // Create Supabase client
     const supabaseClient = window.supabase.createClient(
       "https://qocbciazmukligtcxkfd.supabase.co",
       "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
     );
 
-    // Login with Google
-    function loginWithGoogle() {
+    // Login
+    document.getElementById("loginBtn").addEventListener("click", () => {
       supabaseClient.auth.signInWithOAuth({
         provider: "google",
         options: {
           redirectTo: window.location.origin
         }
       });
+    });
+
+    // 🔑 Redirect ONLY when login just completed
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN" && session) {
+        window.location.href = "dashboard.html";
+      }
+    });
+
+    // Show status (no redirect)
+    async function checkUser() {
+      const { data } = await supabaseClient.auth.getUser();
+      if (data?.user) {
+        document.getElementById("user-status").innerText =
+          "Logged in as " +
+          (data.user.user_metadata?.full_name || data.user.email);
+      }
     }
 
-    // Logout
     async function logout() {
       await supabaseClient.auth.signOut();
       document.getElementById("user-status").innerText = "Not logged in";
-    }
-
-    // Check logged-in user
-    async function checkUser() {
-      const { data } = await supabaseClient.auth.getUser();
-      if (data && data.user) {
-        document.getElementById("user-status").innerText =
-          "Logged in as " + data.user.email;
-      }
     }
 
     checkUser();
