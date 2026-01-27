@@ -5,12 +5,16 @@
   <title>FindARisk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Supabase JS v2 -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
 
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a> |
     <a href="new-car-pdi.html">New Car PDI</a> |
@@ -19,6 +23,7 @@
 
   <hr />
 
+  <!-- Hero -->
   <h1>Find the risk before you accept the car</h1>
 
   <p>
@@ -33,44 +38,85 @@
     <li>Decide with confidence</li>
   </ol>
 
+  <h2>Our Reports</h2>
+  <ul>
+    <li><strong>New Car PDI</strong> – Avoid delivery-day surprises</li>
+    <li><strong>Used Car PDI</strong> – Find hidden problems before you buy</li>
+  </ul>
+
+  <p><strong>Inspect first. Decide later.</strong></p>
+
   <hr />
 
+  <!-- Pricing -->
+  <h2>Get Your PDI Report</h2>
+
+  <p>
+    A 30–60 minute inspection can save you lakhs in repairs and regret.
+  </p>
+
+  <ul>
+    <li>
+      <strong>New Car PDI</strong> –
+      <span class="old-price">₹99</span>
+      <span class="new-price">₹29</span>
+    </li>
+    <li>
+      <strong>Used Car PDI</strong> –
+      <span class="old-price">₹99</span>
+      <span class="new-price">₹29</span>
+    </li>
+  </ul>
+
+  <p>
+    <a href="new-car-pdi.html"><button>Buy New Car PDI</button></a>
+    <a href="used-car-pdi.html"><button>Buy Used Car PDI</button></a>
+  </p>
+
+  <hr />
+
+  <!-- Account -->
   <h2>Account</h2>
 
-  <button id="loginBtn">Login with Google</button>
+  <button onclick="loginWithGoogle()">Login with Google</button>
+  <button onclick="logout()">Logout</button>
+
   <p id="user-status">Not logged in</p>
 
+  <!-- Supabase Logic -->
   <script>
+    // Create Supabase client
     const supabaseClient = window.supabase.createClient(
       "https://qocbciazmukligtcxkfd.supabase.co",
       "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
     );
 
-    // Login button
-    document.getElementById("loginBtn").addEventListener("click", () => {
+    // Login with Google
+    function loginWithGoogle() {
       supabaseClient.auth.signInWithOAuth({
         provider: "google",
         options: {
           redirectTo: window.location.origin
         }
       });
-    });
+    }
 
-    // 🔑 THIS IS THE IMPORTANT PART
-    supabaseClient.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN" && session) {
-        window.location.href = "dashboard.html";
-      }
-    });
+    // Logout
+    async function logout() {
+      await supabaseClient.auth.signOut();
+      document.getElementById("user-status").innerText = "Not logged in";
+    }
 
-    // Optional: show logged-in state if user manually visits home
-    supabaseClient.auth.getUser().then(({ data }) => {
-      if (data?.user) {
+    // Check logged-in user
+    async function checkUser() {
+      const { data } = await supabaseClient.auth.getUser();
+      if (data && data.user) {
         document.getElementById("user-status").innerText =
-          "Logged in as " +
-          (data.user.user_metadata?.full_name || data.user.email);
+          "Logged in as " + data.user.email;
       }
-    });
+    }
+
+    checkUser();
   </script>
 
 </body>
