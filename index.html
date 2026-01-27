@@ -79,13 +79,11 @@
   <h2>Account</h2>
 
   <button onclick="loginWithGoogle()">Login with Google</button>
-  <button onclick="logout()">Logout</button>
 
   <p id="user-status">Not logged in</p>
 
   <!-- Supabase Logic -->
   <script>
-    // Create Supabase client
     const supabaseClient = window.supabase.createClient(
       "https://qocbciazmukligtcxkfd.supabase.co",
       "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
@@ -101,18 +99,12 @@
       });
     }
 
-    // Logout
-    async function logout() {
-      await supabaseClient.auth.signOut();
-      document.getElementById("user-status").innerText = "Not logged in";
-    }
-
-    // Check logged-in user
+    // If already logged in → go to dashboard
     async function checkUser() {
       const { data } = await supabaseClient.auth.getUser();
+
       if (data && data.user) {
-        document.getElementById("user-status").innerText =
-          "Logged in as " + data.user.email;
+        window.location.href = "dashboard.html";
       }
     }
 

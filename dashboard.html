@@ -50,13 +50,19 @@
       const { data } = await supabaseClient.auth.getUser();
 
       if (!data.user) {
-        // Not logged in → send back to home
         window.location.href = "index.html";
         return;
       }
 
+      const user = data.user;
+
+      const name =
+        user.user_metadata?.full_name ||
+        user.user_metadata?.name ||
+        user.email;
+
       document.getElementById("welcome").innerText =
-        "Welcome, " + data.user.email;
+        "Welcome, " + name;
     }
 
     async function logout() {
