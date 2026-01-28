@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FindARisk – Inspect Before You Buy</title>
+  <title>FindARisk – Inspect Before You Accept</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="style.css" />
@@ -11,182 +11,162 @@
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <a href="index.html" class="logo">FindARisk</a>
-      <a href="new-car-pdi.html">New Car PDI</a>
-      <a href="used-car-pdi.html">Used Car PDI</a>
-    </div>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-left">
+    <span class="logo">Find<span>ARisk</span></span>
+  </div>
 
-    <div class="nav-right">
-      <!-- Placeholder for avatar (STEP 2) -->
-      <div id="avatar" class="avatar hidden" onclick="toggleMenu()">U</div>
-
-<div id="user-menu" class="user-menu hidden">
-  <p id="menu-name">User</p>
-  <a href="dashboard.html">Dashboard</a>
-  <button onclick="logout()">Logout</button>
-</div>
-
-    </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="new-car-pdi.html">New Car PDI</a>
+    <a href="used-car-pdi.html">Used Car PDI</a>
+    <a href="dashboard.html">Dashboard</a>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
+  <div class="nav-right">
+    <div id="profile-circle" class="profile-circle hidden">Y</div>
+    <button id="login-btn" onclick="loginWithGoogle()" class="btn-outline">
+      Login
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-modern">
+  <div class="hero-text">
     <h1>
-      Find the risk <span class="highlight">before</span> you accept the car
+      Inspect the car<br />
+      <span class="highlight">before</span> you accept it
     </h1>
 
-    <p class="hero-sub">
-      A simple self-inspection guide that helps you avoid costly surprises
-      in new and used cars.
+    <p>
+      A step-by-step self inspection guide that protects you from
+      repaint, accident, and delivery-day pressure.
     </p>
 
-    <div class="hero-cta">
+    <div class="hero-buttons">
       <a href="new-car-pdi.html" class="btn-primary">New Car PDI</a>
       <a href="used-car-pdi.html" class="btn-outline">Used Car PDI</a>
     </div>
+  </div>
 
-    <p class="trust-line">
-      Trusted by first-time buyers • No mechanics • No pressure
-    </p>
-  </section>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a"
+         alt="Car inspection illustration" />
+  </div>
+</section>
 
-  <!-- WHY -->
-  <section class="why">
-    <h2>Why most buyers regret not inspecting first</h2>
+<!-- TRUST -->
+<section class="trust-bar">
+  <div>✔ No mechanics needed</div>
+  <div>✔ Works for new & used cars</div>
+  <div>✔ Saves lakhs in mistakes</div>
+</section>
 
-    <div class="why-card">❌ Delivery-day pressure hides defects</div>
-    <div class="why-card">❌ Repainted panels go unnoticed</div>
-    <div class="why-card">❌ Used cars can hide accident history</div>
-    <div class="why-card highlight-card">
-      ✅ A 30-minute inspection can save you lakhs
+<!-- PROBLEM -->
+<section class="problem">
+  <h2>Why buyers regret not inspecting first</h2>
+
+  <div class="problem-grid">
+    <div class="problem-card">Delivery-day pressure hides defects</div>
+    <div class="problem-card">Repainted panels go unnoticed</div>
+    <div class="problem-card">Used cars hide accident history</div>
+    <div class="problem-card highlight-card">
+      A 30-minute check can save you lakhs
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="steps">
-    <h2>How it works</h2>
+<!-- STEPS -->
+<section class="steps-modern">
+  <h2>How it works</h2>
 
-    <div class="step">
-      <span class="step-number">1</span>
+  <div class="steps-grid">
+    <div class="step-card">
+      <span>1</span>
       Buy the PDI report
     </div>
 
-    <div class="step">
-      <span class="step-number">2</span>
-      Follow the checklist & videos on your phone
+    <div class="step-card">
+      <span>2</span>
+      Follow checklist & videos
     </div>
 
-    <div class="step">
-      <span class="step-number">3</span>
+    <div class="step-card">
+      <span>3</span>
       Decide with confidence
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PRODUCTS -->
-  <section class="products">
-    <h2>Get Your PDI Report</h2>
-
-    <div class="product-card">
-      <h3>🚗 New Car PDI</h3>
-      <p>Inspect before accepting delivery</p>
-
-      <p class="price">
-        <span class="old">₹99</span>
-        <span class="new">₹29</span>
-      </p>
-
-      <ul>
-        <li>Paint & body checks</li>
-        <li>Odometer & VIN verification</li>
-        <li>Delivery-day guidance</li>
-      </ul>
-
-      <a href="new-car-pdi.html" class="btn-primary">
-        Buy New Car PDI
-      </a>
+<!-- PRODUCTS -->
+<section class="products-modern">
+  <div class="product">
+    <h3>🚗 New Car PDI</h3>
+    <p>Inspect before accepting delivery</p>
+    <div class="price">
+      <span class="old">₹99</span>
+      <span class="new">₹29</span>
     </div>
+    <a href="new-car-pdi.html" class="btn-primary">Buy New Car PDI</a>
+  </div>
 
-    <div class="product-card">
-      <h3>🚙 Used Car PDI</h3>
-      <p>Find hidden problems before buying</p>
-
-      <p class="price">
-        <span class="old">₹99</span>
-        <span class="new">₹29</span>
-      </p>
-
-      <ul>
-        <li>Accident & repaint signs</li>
-        <li>Flood damage indicators</li>
-        <li>Negotiation guidance</li>
-      </ul>
-
-      <a href="used-car-pdi.html" class="btn-primary">
-        Buy Used Car PDI
-      </a>
+  <div class="product">
+    <h3>🚙 Used Car PDI</h3>
+    <p>Find hidden problems before buying</p>
+    <div class="price">
+      <span class="old">₹99</span>
+      <span class="new">₹29</span>
     </div>
-  </section>
+    <a href="used-car-pdi.html" class="btn-primary">Buy Used Car PDI</a>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2026 FindARisk • Inspect first. Decide later.</p>
-  </footer>
+<!-- CTA -->
+<section class="cta">
+  <h2>Inspect once. Avoid regret forever.</h2>
+  <a href="new-car-pdi.html" class="btn-primary">Get Started</a>
+</section>
 
-  <!-- SUPABASE (NO REDIRECT LOGIC HERE) -->
-  <script>
-    const supabaseClient = window.supabase.createClient(
-      "https://qocbciazmukligtcxkfd.supabase.co",
-      "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
-    );
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 FindARisk · Built for Indian car buyers
+</footer>
 
-    function loginWithGoogle() {
-      supabaseClient.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          redirectTo: window.location.origin + "/dashboard.html"
-        }
-      });
-    }
-  </script>
-  <script>
-  function toggleMenu() {
-    document.getElementById("user-menu").classList.toggle("hidden");
+<!-- AUTH LOGIC (SAFE) -->
+<script>
+  const supabaseClient = window.supabase.createClient(
+    "https://qocbciazmukligtcxkfd.supabase.co",
+    "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
+  );
+
+  function loginWithGoogle() {
+    supabaseClient.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin + "/dashboard.html"
+      }
+    });
   }
 
-  async function syncUserUI() {
+  async function syncUser() {
     const { data } = await supabaseClient.auth.getUser();
 
     if (data?.user) {
+      document.getElementById("login-btn").classList.add("hidden");
       const name =
         data.user.user_metadata?.full_name ||
-        data.user.user_metadata?.name ||
         data.user.email;
 
-      const initials = name
-        .split(" ")
-        .map(n => n[0])
-        .join("")
-        .substring(0, 2)
-        .toUpperCase();
-
-      document.getElementById("avatar").innerText = initials;
-      document.getElementById("menu-name").innerText = name;
-
-      document.getElementById("avatar").classList.remove("hidden");
+      document.getElementById("profile-circle").innerText =
+        name.charAt(0).toUpperCase();
+      document.getElementById("profile-circle").classList.remove("hidden");
     }
   }
 
-  async function logout() {
-    await supabaseClient.auth.signOut();
-    window.location.reload();
-  }
-
-  syncUserUI();
+  syncUser();
 </script>
-
 
 </body>
 </html>
