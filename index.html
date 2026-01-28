@@ -21,9 +21,14 @@
 
     <div class="nav-right">
       <!-- Placeholder for avatar (STEP 2) -->
-      <button onclick="loginWithGoogle()" class="btn-primary small">
-        Login
-      </button>
+      <div id="avatar" class="avatar hidden" onclick="toggleMenu()">U</div>
+
+<div id="user-menu" class="user-menu hidden">
+  <p id="menu-name">User</p>
+  <a href="dashboard.html">Dashboard</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
     </div>
   </nav>
 
@@ -146,6 +151,42 @@
       });
     }
   </script>
+  <script>
+  function toggleMenu() {
+    document.getElementById("user-menu").classList.toggle("hidden");
+  }
+
+  async function syncUserUI() {
+    const { data } = await supabaseClient.auth.getUser();
+
+    if (data?.user) {
+      const name =
+        data.user.user_metadata?.full_name ||
+        data.user.user_metadata?.name ||
+        data.user.email;
+
+      const initials = name
+        .split(" ")
+        .map(n => n[0])
+        .join("")
+        .substring(0, 2)
+        .toUpperCase();
+
+      document.getElementById("avatar").innerText = initials;
+      document.getElementById("menu-name").innerText = name;
+
+      document.getElementById("avatar").classList.remove("hidden");
+    }
+  }
+
+  async function logout() {
+    await supabaseClient.auth.signOut();
+    window.location.reload();
+  }
+
+  syncUserUI();
+</script>
+
 
 </body>
 </html>
