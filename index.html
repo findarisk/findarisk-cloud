@@ -25,11 +25,20 @@
   </nav>
 
   <div class="nav-right">
-    <div id="profile-circle" class="profile-circle hidden">Y</div>
-    <button id="login-btn" onclick="loginWithGoogle()" class="btn-outline">
-      Login
-    </button>
+  <button id="login-btn" onclick="loginWithGoogle()" class="btn-outline">
+    Login
+  </button>
+
+  <div id="profile-wrapper" class="profile-wrapper hidden">
+    <div id="profile-circle" class="profile-circle" onclick="toggleMenu()">Y</div>
+
+    <div id="profile-menu" class="profile-menu hidden">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
   </div>
+</div>
+
 </header>
 
 <!-- HERO -->
@@ -150,18 +159,29 @@
     });
   }
 
+  function toggleMenu() {
+    document.getElementById("profile-menu").classList.toggle("hidden");
+  }
+
+  async function logout() {
+    await supabaseClient.auth.signOut();
+    window.location.href = "index.html";
+  }
+
   async function syncUser() {
     const { data } = await supabaseClient.auth.getUser();
 
     if (data?.user) {
       document.getElementById("login-btn").classList.add("hidden");
+      document.getElementById("profile-wrapper").classList.remove("hidden");
+
       const name =
         data.user.user_metadata?.full_name ||
+        data.user.user_metadata?.name ||
         data.user.email;
 
       document.getElementById("profile-circle").innerText =
         name.charAt(0).toUpperCase();
-      document.getElementById("profile-circle").classList.remove("hidden");
     }
   }
 

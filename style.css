@@ -65,10 +65,13 @@ button:hover {
 }
 
 .hero {
-  padding: 60px 20px;
+  padding: 60px;
   max-width: 900px;
   margin: auto;
+  background: linear-gradient(180deg, #FFF7ED, #ffffff);
+  border-radius: 16px;
 }
+
 
 .highlight {
   color: #FF7A18;
@@ -103,6 +106,12 @@ button:hover {
   border-radius: 6px;
   margin-left: 10px;
 }
+
+.btn-outline:hover {
+  background: #FF7A18;
+  color: white;
+}
+
 
 .why {
   max-width: 900px;
@@ -347,3 +356,42 @@ button:hover {
   padding: 20px;
   color: #666;
 }
+
+.profile-wrapper {
+  position: relative;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: 46px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  min-width: 160px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.profile-menu a {
+  display: block;
+  padding: 12px 14px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile-menu a:hover {
+  background: #FFF7ED;
+}
+
+.hidden {
+  display: none;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+
