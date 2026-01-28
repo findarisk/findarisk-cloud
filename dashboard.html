@@ -11,25 +11,60 @@
 
 <body>
 
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="dashboard.html">Dashboard</a> |
-    <a href="#" onclick="logout()">Logout</a>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">FindARisk</a>
+    </div>
+
+    <div class="nav-right">
+      <!-- Avatar -->
+      <div id="avatar" class="avatar hidden" onclick="toggleMenu()">U</div>
+
+      <!-- Dropdown -->
+      <div id="user-menu" class="user-menu hidden">
+        <p id="menu-name">User</p>
+        <a href="dashboard.html">Dashboard</a>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
   </nav>
 
-  <hr />
+  <!-- DASHBOARD CONTENT -->
+  <section class="dashboard">
+    <h1 id="welcome">Checking login…</h1>
 
-  <h1>Dashboard</h1>
-  <p id="welcome">Checking login…</p>
+    <p class="dash-sub">
+      Access your purchased PDI reports and inspection guides.
+    </p>
 
-  <hr />
+    <div class="dashboard-cards">
+      <div class="dash-card">
+        <h3>🚗 New Car PDI</h3>
+        <p>Status: <strong>Not Purchased</strong></p>
+        <a href="new-car-pdi.html" class="btn-primary small">
+          Buy New Car PDI
+        </a>
+      </div>
 
+      <div class="dash-card">
+        <h3>🚙 Used Car PDI</h3>
+        <p>Status: <strong>Not Purchased</strong></p>
+        <a href="used-car-pdi.html" class="btn-primary small">
+          Buy Used Car PDI
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPABASE LOGIC -->
   <script>
     const supabaseClient = window.supabase.createClient(
       "https://qocbciazmukligtcxkfd.supabase.co",
       "sb_publishable_MIyDxEvBxuQSDszElNW0Tg__tV7OaO-"
     );
 
+    // Protect dashboard
     async function checkAuth() {
       const { data } = await supabaseClient.auth.getUser();
 
@@ -43,8 +78,24 @@
         data.user.user_metadata?.name ||
         data.user.email;
 
+      const initials = name
+        .split(" ")
+        .map(n => n[0])
+        .join("")
+        .substring(0, 2)
+        .toUpperCase();
+
       document.getElementById("welcome").innerText =
         "Welcome, " + name;
+
+      document.getElementById("avatar").innerText = initials;
+      document.getElementById("menu-name").innerText = name;
+
+      document.getElementById("avatar").classList.remove("hidden");
+    }
+
+    function toggleMenu() {
+      document.getElementById("user-menu").classList.toggle("hidden");
     }
 
     async function logout() {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FindARisk</title>
+  <title>FindARisk – Inspect Before You Buy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="style.css" />
@@ -11,15 +11,21 @@
 
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="new-car-pdi.html">New Car PDI</a> |
-    <a href="used-car-pdi.html">Used Car PDI</a> |
-    <a href="dashboard.html">Dashboard</a>
-  </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">FindARisk</a>
+      <a href="new-car-pdi.html">New Car PDI</a>
+      <a href="used-car-pdi.html">Used Car PDI</a>
+    </div>
 
-  <hr />
+    <div class="nav-right">
+      <!-- Placeholder for avatar (STEP 2) -->
+      <button onclick="loginWithGoogle()" class="btn-primary small">
+        Login
+      </button>
+    </div>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
@@ -28,8 +34,8 @@
     </h1>
 
     <p class="hero-sub">
-      A simple self-inspection guide that helps you avoid
-      costly surprises in new and used cars.
+      A simple self-inspection guide that helps you avoid costly surprises
+      in new and used cars.
     </p>
 
     <div class="hero-cta">
@@ -42,9 +48,7 @@
     </p>
   </section>
 
-  <hr />
-
-  <!-- WHY BUY -->
+  <!-- WHY -->
   <section class="why">
     <h2>Why most buyers regret not inspecting first</h2>
 
@@ -56,9 +60,7 @@
     </div>
   </section>
 
-  <hr />
-
-  <!-- STEP 1 / STEP 2 / STEP 3 -->
+  <!-- HOW IT WORKS -->
   <section class="steps">
     <h2>How it works</h2>
 
@@ -77,8 +79,6 @@
       Decide with confidence
     </div>
   </section>
-
-  <hr />
 
   <!-- PRODUCTS -->
   <section class="products">
@@ -125,16 +125,12 @@
     </div>
   </section>
 
-  <hr />
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 FindARisk • Inspect first. Decide later.</p>
+  </footer>
 
-  <!-- ACCOUNT (UNCHANGED LOGIC) -->
-  <h2>Account</h2>
-
-  <button onclick="loginWithGoogle()">Login with Google</button>
-  <button onclick="logout()">Logout</button>
-
-  <p id="user-status">Checking login…</p>
-
+  <!-- SUPABASE (NO REDIRECT LOGIC HERE) -->
   <script>
     const supabaseClient = window.supabase.createClient(
       "https://qocbciazmukligtcxkfd.supabase.co",
@@ -149,29 +145,6 @@
         }
       });
     }
-
-    async function logout() {
-      await supabaseClient.auth.signOut();
-      document.getElementById("user-status").innerText = "Not logged in";
-    }
-
-    async function syncUser() {
-      const { data } = await supabaseClient.auth.getUser();
-
-      if (data?.user) {
-        const name =
-          data.user.user_metadata?.full_name ||
-          data.user.user_metadata?.name ||
-          data.user.email;
-
-        document.getElementById("user-status").innerText =
-          "Logged in as " + name;
-      } else {
-        document.getElementById("user-status").innerText = "Not logged in";
-      }
-    }
-
-    syncUser();
   </script>
 
 </body>

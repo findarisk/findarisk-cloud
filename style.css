@@ -145,3 +145,91 @@ button:hover {
   font-size: 1.4em;
   font-weight: bold;
 }
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #FF7A18;
+  text-decoration: none;
+}
+
+/* AVATAR */
+.avatar {
+  width: 38px;
+  height: 38px;
+  background: #FF7A18;
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
+.user-menu {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 12px;
+  width: 160px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.user-menu p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-menu a,
+.user-menu button {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* DASHBOARD */
+.dashboard {
+  max-width: 900px;
+  margin: auto;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.dash-card {
+  border: 1px solid #E5E7EB;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.small {
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+/* UTIL */
+.hidden {
+  display: none;
+}
