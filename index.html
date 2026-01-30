@@ -13,122 +13,210 @@
 
 <!-- NAVBAR -->
 <header class="navbar">
-  <div class="nav-left">
-    <span class="logo">Find<span>ARisk</span></span>
-  </div>
+  <div class="navbar-inner">
 
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="new-car-pdi.html">New Car PDI</a>
-    <a href="used-car-pdi.html">Used Car PDI</a>
-    <a href="dashboard.html">Dashboard</a>
-  </nav>
-
-  <div class="nav-right">
-  <button id="login-btn" onclick="loginWithGoogle()" class="btn-outline">
-    Login
-  </button>
-
-  <div id="profile-wrapper" class="profile-wrapper hidden">
-    <div id="profile-circle" class="profile-circle" onclick="toggleMenu()">Y</div>
-
-    <div id="profile-menu" class="profile-menu hidden">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="#" onclick="logout()">Logout</a>
+    <!-- LEFT -->
+    <div class="nav-left">
+      <a href="index.html" class="logo">Find<span>ARisk</span></a>
     </div>
-  </div>
-</div>
 
+    <!-- RIGHT -->
+    <div class="nav-right">
+      <a href="new-car-pdi.html" class="nav-cta">New Car PDI</a>
+      <a href="used-car-pdi.html" class="nav-cta">Used Car PDI</a>
+
+      <button
+        id="login-btn"
+        onclick="loginWithGoogle()"
+        class="btn-outline small"
+      >
+        Login
+      </button>
+
+      <div id="profile-wrapper" class="profile-wrapper hidden">
+        <div
+          id="profile-circle"
+          class="profile-circle"
+          onclick="toggleMenu()"
+        >
+          Y
+        </div>
+
+        <div id="profile-menu" class="profile-menu hidden">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="#" onclick="logout()">Logout</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </header>
 
 <!-- HERO -->
-<section class="hero-modern">
-  <div class="hero-text">
-    <h1>
-      Inspect the car<br />
-      <span class="highlight">before</span> you accept it
-    </h1>
+<section class="hero">
+  <div class="hero-inner">
 
-    <p>
-      A step-by-step self inspection guide that protects you from
-      repaint, accident, and delivery-day pressure.
-    </p>
+    <!-- LEFT: TEXT -->
+    <div class="hero-text">
+      <h1>
+        Inspect your car <span class="highlight">before</span> <br />
+        it becomes your problem
+      </h1>
 
-    <div class="hero-buttons">
-      <a href="new-car-pdi.html" class="btn-primary">New Car PDI</a>
-      <a href="used-car-pdi.html" class="btn-outline">Used Car PDI</a>
+      <p class="hero-sub">
+        Built for Indian car buyers who don’t want surprises.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="new-car-pdi.html" class="btn-primary">New Car PDI</a>
+        <a href="used-car-pdi.html" class="btn-outline">Used Car PDI</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="hero-visual">
+      <img
+        src="b1ff2ed1-d309-48ac-8af8-ac90eacc566e.png"
+        alt="Car ready for inspection before delivery"
+      />
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST PILLS -->
+<section class="trust-pills">
+  <span>✔ No mechanic required</span>
+  <span>✔ Works for new & used cars</span>
+  <span>✔ Avoid costly mistakes</span>
+  <span>✔ Inspect at your own pace</span>
+</section>
+
+<!-- PROTECTION SECTION -->
+<section class="why-flow">
+  <h2>Why most buyers regret not inspecting first</h2>
+
+  <p class="why-intro">
+    Buying a car should feel exciting not stressful later.
+    But small, overlooked details often turn that excitement into stress later.
+  </p>
+
+  <div class="why-steps">
+    <div class="why-step">
+      <span>1</span>
+      <div>
+        <strong>Delivery day is rushed</strong>
+        <p>
+          You’re expected to sign, pay, and accept often with people waiting and little time to look closely.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-step">
+      <span>2</span>
+      <div>
+        <strong>Surface-level checks miss real issues.</strong>
+        <p>
+          Repainted panels, uneven gaps, worn interiors or missing accessories don’t stand out unless you know where to look.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-step">
+      <span>3</span>
+      <div>
+        <strong>Used cars hide their past</strong>
+        <p>
+          Accident repairs, flood damage, and odometer inconsistencies often surface too late.
+        </p>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="hero-visual">
-    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a"
-         alt="Car inspection illustration" />
+<!-- The emotional resolution -->
+<section class="calm-section">
+  <p class="calm-title">
+    A calm, guided inspection changes everything.
+  </p>
+
+  <div class="calm-lines">
+    <p>You slow down.</p>
+    <p>You verify each detail.</p>
+    <p>You accept the car only when you’re fully confident.</p>
   </div>
+
+  <p class="calm-footer">
+    That’s exactly what <strong>FindARisk</strong> is built for.
+  </p>
 </section>
 
-<!-- TRUST -->
-<section class="trust-bar">
-  <div>✔ No mechanics needed</div>
-  <div>✔ Works for new & used cars</div>
-  <div>✔ Saves lakhs in mistakes</div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem">
-  <h2>Why buyers regret not inspecting first</h2>
-
-  <div class="problem-grid">
-    <div class="problem-card">Delivery-day pressure hides defects</div>
-    <div class="problem-card">Repainted panels go unnoticed</div>
-    <div class="problem-card">Used cars hide accident history</div>
-    <div class="problem-card highlight-card">
-      A 30-minute check can save you lakhs
-    </div>
-  </div>
-</section>
-
-<!-- STEPS -->
-<section class="steps-modern">
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
   <h2>How it works</h2>
 
-  <div class="steps-grid">
-    <div class="step-card">
-      <span>1</span>
-      Buy the PDI report
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-number">1</div>
+      <div class="how-content">
+        <strong>Buy the PDI report</strong>
+        <p>Choose New or Used Car PDI based on what you’re buying.</p>
+      </div>
     </div>
 
-    <div class="step-card">
-      <span>2</span>
-      Follow checklist & videos
+    <div class="how-step">
+      <div class="how-number">2</div>
+      <div class="how-content">
+        <strong>Follow the guided checklist</strong>
+        <p>Simple steps, photos, and videos show you exactly what to inspect.</p>
+      </div>
     </div>
 
-    <div class="step-card">
-      <span>3</span>
-      Decide with confidence
+    <div class="how-step">
+      <div class="how-number">3</div>
+      <div class="how-content">
+        <strong>Decide with confidence</strong>
+        <p>Accept the car only when everything checks out - no pressure.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<!-- Products -->
+
 <section class="products-modern">
-  <div class="product">
-    <h3>🚗 New Car PDI</h3>
+  <div
+    class="product"
+    style="--bg: url('./new-car-pdi.png');"
+  >
+    <h3>New Car PDI</h3>
     <p>Inspect before accepting delivery</p>
+
     <div class="price">
       <span class="old">₹99</span>
       <span class="new">₹29</span>
     </div>
-    <a href="new-car-pdi.html" class="btn-primary">Buy New Car PDI</a>
+
+    <a href="new-car-pdi.html" class="btn-primary">
+      Buy New Car PDI
+    </a>
   </div>
 
-  <div class="product">
-    <h3>🚙 Used Car PDI</h3>
+  <div
+    class="product"
+    style="--bg: url('./used-car-pdi.png');"
+  >
+    <h3>Used Car PDI</h3>
     <p>Find hidden problems before buying</p>
+
     <div class="price">
       <span class="old">₹99</span>
       <span class="new">₹29</span>
     </div>
-    <a href="used-car-pdi.html" class="btn-primary">Buy Used Car PDI</a>
+
+    <a href="used-car-pdi.html" class="btn-primary">
+      Buy Used Car PDI
+    </a>
   </div>
 </section>
 
@@ -143,7 +231,7 @@
   © 2026 FindARisk · Built for Indian car buyers
 </footer>
 
-<!-- AUTH LOGIC (SAFE) -->
+<!-- AUTH LOGIC -->
 <script>
   const supabaseClient = window.supabase.createClient(
     "https://qocbciazmukligtcxkfd.supabase.co",
@@ -168,24 +256,40 @@
     window.location.href = "index.html";
   }
 
-  async function syncUser() {
-    const { data } = await supabaseClient.auth.getUser();
+  function setProfile(user) {
+    const loginBtn = document.getElementById("login-btn");
+    const profileWrapper = document.getElementById("profile-wrapper");
+    const profileCircle = document.getElementById("profile-circle");
 
-    if (data?.user) {
-      document.getElementById("login-btn").classList.add("hidden");
-      document.getElementById("profile-wrapper").classList.remove("hidden");
-
-      const name =
-        data.user.user_metadata?.full_name ||
-        data.user.user_metadata?.name ||
-        data.user.email;
-
-      document.getElementById("profile-circle").innerText =
-        name.charAt(0).toUpperCase();
+    if (!user) {
+      loginBtn.classList.remove("hidden");
+      profileWrapper.classList.add("hidden");
+      return;
     }
+
+    const name =
+      user.user_metadata?.full_name ||
+      user.user_metadata?.name ||
+      user.email;
+
+    const parts = name.split(" ");
+    const initials =
+      parts.length >= 2
+        ? parts[0][0] + parts[1][0]
+        : name[0];
+
+    profileCircle.innerText = initials.toUpperCase();
+
+    loginBtn.classList.add("hidden");
+    profileWrapper.classList.remove("hidden");
   }
 
-  syncUser();
+  async function syncNavbarUser() {
+    const { data } = await supabaseClient.auth.getUser();
+    setProfile(data?.user);
+  }
+
+  syncNavbarUser();
 </script>
 
 </body>
