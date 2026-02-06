@@ -222,8 +222,10 @@
 
 <!-- CTA -->
 <section class="cta">
-  <h2>Inspect once. Avoid regret forever.</h2>
-  <a href="new-car-pdi.html" class="btn-primary">Get Started</a>
+  <h2>Know your car before you own it.</h2>
+  <a href="#" id="cta-button" class="btn-primary btn-cta">
+    Get Started
+  </a>
 </section>
 
 <!-- FOOTER -->
@@ -290,6 +292,20 @@
   }
 
   syncNavbarUser();
+</script>
+
+<script>
+  document.getElementById("cta-button").addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    const { data } = await supabaseClient.auth.getUser();
+
+    if (data?.user) {
+      window.location.href = "new-car-pdi.html";
+    } else {
+      loginWithGoogle(); // direct login instead of fake login.html
+    }
+  });
 </script>
 
 </body>

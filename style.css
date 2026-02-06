@@ -1,3 +1,7 @@
+:root {
+  --section-gap: 80px;
+}
+
 /* ======================
    BASE
 ====================== */
@@ -15,7 +19,7 @@ h1, h2 {
 }
 
 h2 {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 ul, ol {
@@ -27,7 +31,7 @@ hr {
 }
 
 section {
-  margin-bottom: 60px;
+  margin-bottom: var(--section-gap);
 }
 
 /* NAVBAR */
@@ -201,6 +205,31 @@ section {
   text-decoration: none; /* ✅ safety */
 }
 
+/* CTA specific button */
+.btn-cta {
+  margin-top: 28px;
+  padding: 10px 10px;
+  font-size: 35px;
+  font-weight: 700;
+  border-radius: 20px; 
+  background: #FF7A18;
+  color: white;
+  border: none;
+  box-shadow: none;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.btn-cta:hover {
+  background: #FF8C2E;      /* lighter → feels closer */
+  transform: scale(1.05);   /* pop */
+}
+
+.btn-cta:active {
+  transform: scale(0.98);
+}
+
 /* ======================
    PROFILE / ACCOUNT
 ====================== */
@@ -254,6 +283,7 @@ section {
 
 .hero {
   background: linear-gradient(180deg, #FFF7ED, #ffffff);
+  position: relative;
   padding: 0px 0 0px;
 }
 
@@ -262,15 +292,19 @@ section {
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 0.45fr 0.55fr; /* 50 / 50 */
+  grid-template-columns: 1fr 1.2fr; /* equal columns */
   align-items: center;
-  gap: 0px;
 }
+
 
 /* LEFT */
 
 .hero-text {
   transform: translateY(-12px);
+  position: relative;
+  z-index: 3;
+  max-width: 520px;
+  background: transparent;
 }
 
 .hero-text h1 {
@@ -298,29 +332,53 @@ section {
 
 /* RIGHT */
 .hero-visual {
-  height: 350px;
+  position: relative;
+  height: 400px;
   border-radius: 22px;
+  margin-left: -590px;
+  margin-right: -18px;
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255,247,237,0) 0%,
+    rgba(255,247,237,0.35) 30%,
+    rgba(255,247,237,0.7) 50%,
+    rgba(255,247,237,0.9) 65%,
+    rgba(255,247,237,1) 80%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center right; /* keeps car visible */
+  object-position: center right;
   display: block;
+  filter: contrast(1.05) saturate(1.05);
+  z-index: 1;
 }
 
 /* ======================
    TRUST PILLS
 ====================== */
 
+.trust-section {
+  margin-bottom: var(--section-gap);
+}
+
 .trust-pills {
   display: flex;
   justify-content: center;
   gap: 18px;
-  margin: 24px auto 16px;
   padding: 0 20px;
   flex-wrap: wrap; /* mobile safe */
 }
@@ -341,17 +399,14 @@ section {
   transition: 0.2s ease;
 }
 
-.trust-bar {
-  margin-bottom: 60px; /* was implicitly ~60px */
-}
-
 /* ======================
   Why Section
 ====================== */
 .why-flow {
   font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 900px;
-  margin: 32px auto 32px;
   padding: 0 20px;
 }
 
@@ -404,11 +459,12 @@ section {
 ====================== */
 .calm-section {
   max-width: 900px;
-  margin: 80px auto;
   padding: 56px 32px;
   text-align: center;
   background: #FFF7ED;
   border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .calm-title {
@@ -452,8 +508,9 @@ section {
 ====================== */
 .how-it-works {
   max-width: 900px;
-  margin: 100px auto 80px;
   padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .how-it-works h2 {
@@ -508,7 +565,6 @@ section {
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   max-width: 1200px;
-  margin: 60px auto;
   padding: 0 20px;
 }
 
@@ -526,6 +582,10 @@ section {
 
 /* PRODUCT CARD */
 .product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 360px;
   position: relative;
   border: 1px solid #E5E7EB;
   padding: 32px;
@@ -533,6 +593,17 @@ section {
   overflow: hidden;
   background: white;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product .btn-primary {
+  margin-top: auto;
+  align-self: flex-start;   /* 🔥 THIS STOPS FULL-WIDTH */
 }
 
 /* BACKGROUND IMAGE */
@@ -602,17 +673,20 @@ section {
    CTA + FOOTER
 ====================== */
 .cta {
+  font-size: 30px;
   text-align: center;
-  padding: 60px 20px;
+  padding: 60px 0px;
   background: #FF7A18;
   color: white;
   border-radius: 16px;
+  margin-bottom: 0;
 }
 
 .footer {
   text-align: center;
   padding: 20px;
   color: #666;
+  margin: 0;
 }
 
 /* CHECKLIST OVERLAY */
